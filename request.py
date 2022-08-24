@@ -20,6 +20,8 @@ params = {'apiKey': 'e1f10a1e78da46f5b10a1e78da96f525',
 start_dates = ['20201001','20201101','20201201','20210101','20210201','20210301']
 end_dates = ['20201031','20201130','20201231','20210131','20210228','20210331']
 
+temperature_list = []
+
 def get_historical_weather_data(BASE_WEATHER_URL, weather_headers, start_dates, end_dates):
     for start_end in range(0,len(start_dates)):
         params['startDate'] = start_dates[start_end]
@@ -34,6 +36,11 @@ def date_conversion(observation_data):
         weather_collection_date = datetime.datetime.fromtimestamp(value.get('valid_time_gmt'))
         weather_collection_hour = str(weather_collection_date).split(' ')[1]
         if weather_collection_hour == '14:54:00':
-            print(weather_collection_date, value.get('temp'))
-    
+            temperature_list.append({'Date':str(weather_collection_date).split(' ')[0],'Temp':value.get('temp')})
+    write_data_to_json(temperature_list)
+         
+def write_data_to_json(temperature_list):
+    with open('temp_data.json','w') as temp_data_file:
+        temp_data_file.write(json.dumps(temperature_list))
+
 get_historical_weather_data(BASE_WEATHER_URL,weather_headers, start_dates, end_dates)
