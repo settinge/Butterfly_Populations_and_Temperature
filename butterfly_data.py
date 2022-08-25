@@ -29,8 +29,8 @@ def select_columns_and_munge(df,file, columns):
     sum_data_and_write(df_selected_columns, column_selection)
 
 def sum_data_and_write(df_selected_columns, column_selection):
-    total_thanksgiving_count = df_selected_columns[column_selection[0]].sum()
-    total_new_years_count = df_selected_columns[column_selection[1]].sum()
+    total_thanksgiving_count = int(df_selected_columns[column_selection[0]].sum())
+    total_new_years_count = int(df_selected_columns[column_selection[1]].sum())
     print(f'Thanksgiving count is {total_thanksgiving_count}')
     print(f'New Years count is {total_new_years_count}')
     butterfly_count_list.extend([{column_selection[0]:total_thanksgiving_count},
