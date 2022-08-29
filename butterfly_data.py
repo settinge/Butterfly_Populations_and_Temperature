@@ -1,9 +1,11 @@
 import pandas as pd
 import json
+import os
 
 butterfly_paths = ["C:\\Users\\swimm\\Downloads\\WMNYC_data_02.17.21.xlsx","C:\\Users\\swimm\\Downloads\\NewYearsData_2021-22.xlsx"]
 butterfly_columns = ['WMTC 2020','WMNYC 2020/21','Thanksgiving Count 2021','New Year\'s Count 2021-22']
 butterfly_count_list = []
+butterfly_dict = {'WMTC 2020':'2020-11-26','WMNYC 2020/21':'2021-01-01','Thanksgiving Count 2021':'2021-11-25','New Year\'s Count 2021-22':'2022-01-01'}
 
 def open_butterfly_excel(excel_name, sheet, columns):
     for file in range(0,len(excel_name)):
@@ -33,10 +35,11 @@ def sum_data_and_write(df_selected_columns, column_selection):
     total_new_years_count = int(df_selected_columns[column_selection[1]].sum())
     print(f'Thanksgiving count is {total_thanksgiving_count}')
     print(f'New Years count is {total_new_years_count}')
-    butterfly_count_list.extend([{column_selection[0]:total_thanksgiving_count},
-                                {column_selection[1]:total_new_years_count}])
+    butterfly_count_list.extend([{butterfly_dict[column_selection[0]]:total_thanksgiving_count},
+                                {butterfly_dict[column_selection[1]]:total_new_years_count}])
     print(butterfly_count_list)
-    with open('butterfly_data.json','w') as butterfly_data_file:
+    # with open('butterfly_data.json','w') as butterfly_data_file:
+    with open(os.path.join("C:\\Users\\swimm\\OneDrive\\Desktop\\Butterfly_Repo\\Butterfly_Populations_and_Temperature\\data","butterfly_data.json"), "w") as butterfly_data_file:
         butterfly_data_file.write(json.dumps(butterfly_count_list))
 
 open_butterfly_excel(butterfly_paths, 0, butterfly_columns)

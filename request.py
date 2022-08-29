@@ -1,7 +1,7 @@
 import requests
 import json
 import datetime
-
+import os
 
 BASE_WEATHER_URL = 'https://api.weather.com/v1/location/KMRY:9:US/observations/historical.json?'
 
@@ -17,8 +17,8 @@ params = {'apiKey': 'e1f10a1e78da46f5b10a1e78da96f525',
 'startDate': '20201101',
 'endDate': '20201130'}
 
-start_dates = ['20201001','20201101','20201201','20210101','20210201','20210301']
-end_dates = ['20201031','20201130','20201231','20210131','20210228','20210331']
+start_dates = ['20201001','20201101','20201201','20210101','20210201','20210301','20210401','20210501','20210601','20210701','20210801','20210901','20211001','20211101','20211201','20220101']
+end_dates = ['20201031','20201130','20201231','20210131','20210228','20210331','20210430','20210531','20210630','20210731','20210831','20210930','20211031','20211130','20211231','20220131']
 
 temperature_list = []
 
@@ -40,7 +40,7 @@ def date_conversion(observation_data):
     write_data_to_json(temperature_list)
          
 def write_data_to_json(temperature_list):
-    with open('temp_data.json','w') as temp_data_file:
+    with open(os.path.join("C:\\Users\\swimm\\OneDrive\\Desktop\\Butterfly_Repo\\Butterfly_Populations_and_Temperature\\data","temp_data.json"), "w") as temp_data_file:
         temp_data_file.write(json.dumps(temperature_list))
 
 get_historical_weather_data(BASE_WEATHER_URL,weather_headers, start_dates, end_dates)
