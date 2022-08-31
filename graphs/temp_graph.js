@@ -50,20 +50,37 @@ d3.json("../data/butterfly_data.json").then(function(buttfly_data) {
         var barData={
             y: countarray, 
             x: datearray, 
-            type: 'bar'
+            mode: 'markers+text',
+            marker: {
+                color: 'red',
+                line: {
+                    color: 'red'
+                }
+            },
+            type: 'scatter',
+            name: 'Butterfly Count',
+            text: ['Thanksgiving Count 2020', 'New Years Count 2021', 'Thanksgiving Count 2021', 'New Years Count 2022'],
+            textfont : {
+            family:'Times New Roman'
+            },
+            textposition: 'bottom center',
+            marker: { size: 12 }
         };
 
     // adds styling to chart
-    var barLayout={
-        title: 'Butterfly Count', 
+    var layout = {
         xaxis: {
             range: ['2020-11-01', '2022-02-01'],
             type: 'date'
-          },
+        },
+        yaxis: {
+          range: [0, 27000]
+        },
+        title:'Butterfly Count in Monterey County 2020-2022'
      
     };
 
     //creates bar chart
-    Plotly.newPlot('bar', [barData], barLayout);
+    Plotly.newPlot('bar', [barData], layout);
 
 });
