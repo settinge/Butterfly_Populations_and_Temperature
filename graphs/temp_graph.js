@@ -52,9 +52,9 @@ d3.json("../data/butterfly_data.json").then(function(buttfly_data) {
             x: datearray, 
             mode: 'markers+text',
             marker: {
-                color: 'red',
+                color: 'rgb(17, 157, 255)',
                 line: {
-                    color: 'red'
+                    color: 'rgb(17, 157, 255)'
                 }
             },
             type: 'scatter',
