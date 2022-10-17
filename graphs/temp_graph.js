@@ -29,7 +29,7 @@ d3.json("../data/temp_data.json").then(function(data) {
 
 });
 
-d3.json("../data/butterfly_data.json").then(function(buttfly_data) {
+d3.json("../data/total_butterfly_data.json").then(function(buttfly_data) {
     var arrayLength = buttfly_data.length;
     var datearray = [];
     var countarray = [];
@@ -59,7 +59,7 @@ d3.json("../data/butterfly_data.json").then(function(buttfly_data) {
             },
             type: 'scatter',
             name: 'Butterfly Count',
-            text: ['Thanksgiving Count 2020', 'New Years Count 2021', 'Thanksgiving Count 2021', 'New Years Count 2022'],
+            // text: ['Thanksgiving Count 2020', 'New Years Count 2021', 'Thanksgiving Count 2021', 'New Years Count 2022'],
             textfont : {
             family:'Times New Roman'
             },
@@ -70,13 +70,13 @@ d3.json("../data/butterfly_data.json").then(function(buttfly_data) {
     // adds styling to chart
     var layout = {
         xaxis: {
-            range: ['2020-11-01', '2022-02-01'],
+            range: ['1997-11-01', '2022-02-01'],
             type: 'date'
         },
         yaxis: {
           range: [0, 27000]
         },
-        title:'Butterfly Count in Monterey County 2020-2022'
+        title:'Butterfly Count in Monterey County 1997-2022'
      
     };
 
