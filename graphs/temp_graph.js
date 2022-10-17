@@ -18,6 +18,10 @@ d3.json("../data/temp_data.json").then(function(data) {
 
     // adds styling to chart
     var scatterLayout={
+        xaxis: {
+            range: ['1997-11-15', '2022-02-15'],
+            type: 'date'
+        },
         title: 'Temperature', 
         margin: {
             t: 30

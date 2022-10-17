@@ -64,7 +64,8 @@ def date_conversion(observation_data):
     for value in observation_data:
         weather_collection_date = datetime.fromtimestamp(value.get('valid_time_gmt'))
         weather_collection_hour = str(weather_collection_date).split(' ')[1]
-        if weather_collection_hour == '14:54:00':
+        weather_collection_day = str(weather_collection_date).split('-')[2][:2]
+        if weather_collection_hour == '14:54:00' and weather_collection_day == '15':
             temperature_list.append({'Date':str(weather_collection_date).split(' ')[0],'Temp':value.get('temp')})
     write_data_to_json(temperature_list)
          
