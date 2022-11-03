@@ -32,8 +32,9 @@ num_years = 2022-1996
 counter = 0
 
 def get_historical_weather_data(BASE_WEATHER_URL,weather_headers,actual_start_date_string, actual_start_date_date, actual_end_date, end_date_start_string, end_date_start_date):
-    num_months = (actual_end_date.year - actual_start_date_date.year) * 12 + (actual_end_date.month - actual_start_date_date.month) + 1
+    num_months = (actual_end_date.year - actual_start_date_date.year) * 6
     years_months = num_years * num_months
+    print(years_months)
     for timeinterval in range(0,years_months):
         params['startDate'] = actual_start_date_string
         params['endDate'] = end_date_start_string
