@@ -77,8 +77,8 @@ d3.json("../data/total_butterfly_data.json").then(function(buttfly_data) {
 
     var layout = {
         title: 'Temperature vs Butterfly Counts in Monterey: 1997 - 2022',
-        yaxis: {title: 'Simple Contour Plot Axis', range: [0, 100]},
-        yaxis2: {title: 'Line and Scatter Plot Axis', range: [0, 90]}
+        yaxis: {title: 'Butterfly Count', range: [0, 100]},
+        yaxis2: {title: 'Temperature - Fahrenheit', range: [0, 90]}
     };
 
     Plotly.newPlot('plotDiv', plotData, layout);
